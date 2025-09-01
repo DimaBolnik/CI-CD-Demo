@@ -1,5 +1,8 @@
 plugins {
     id 'java'
+    id 'groovy'
+    id 'io.qameta.allure' version '2.12.0'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'ru.bolnik'
@@ -9,14 +12,42 @@ repositories {
     mavenCentral()
 }
 
+allure {
+    // ?????? allure-commandline (??? allureReport/allureServe)
+    version = '2.19.0'
+
+    adapter {
+        aspectjWeaver = true
+        autoconfigure = true
+        autoconfigureListeners = true
+
+        frameworks {
+            junit5 {
+                enabled = true
+                adapterVersion = '2.19.0'
+                autoconfigureListeners = true
+            }
+        }
+    }
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'com.codeborne:selenide:7.5.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.13'
+
+    testImplementation "io.qameta.allure:allure-junit5:2.19.0"
+    testImplementation "io.qameta.allure:allure-selenide:2.19.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 test {
     useJUnitPlatform()
-    testLogging {
-        events "passed", "failed"
-    }
+}
+kotlin {
+    jvmToolchain(17)
 }
