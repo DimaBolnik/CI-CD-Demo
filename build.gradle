@@ -47,7 +47,7 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(17)
+    systemProperty "browser", System.getProperty("browser", "chrome")
+    systemProperty "browserVersion", System.getProperty("browserVersion", "")
+    systemProperty "browserSize", System.getProperty("browserSize", "1920x1080")
 }

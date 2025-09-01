@@ -24,27 +24,33 @@ public class TextBoxTest {
     public static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
+
+        // Читаем значения из Gradle
+        String browser = System.getProperty("browser", "chrome");
+        String browserVersion = System.getProperty("browserVersion", "");
+        String browserSize = System.getProperty("browserSize", "1920x1080");
+
+        Configuration.browser = browser;
+        Configuration.browserSize = browserSize;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        // Configuration.holdBrowserOpen = true;
-        // Стандартные параметры Selenium
+
+        // capabilities для Selenoid
         MutableCapabilities capabilities = new MutableCapabilities();
-        capabilities.setCapability("browserName", "chrome");
-        capabilities.setCapability("browserVersion", "127.0");
+        capabilities.setCapability("browserName", browser);
+        if (!browserVersion.isEmpty()) {
+            capabilities.setCapability("browserVersion", browserVersion);
+        }
 
-        // Дополнительные опции для Selenoid
         Map<String, Object> selenoidOptions = new HashMap<>();
-        selenoidOptions.put("enableVNC", true);     // включить VNC-доступ
-        selenoidOptions.put("enableVideo", true);   // включить запись видео
-
+        selenoidOptions.put("enableVNC", true);
+        selenoidOptions.put("enableVideo", true);
         capabilities.setCapability("selenoid:options", selenoidOptions);
 
         Configuration.browserCapabilities = capabilities;
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)      // делать скриншоты при падении
-                .savePageSource(true)); // сохранять HTML страницы
-
+                .screenshots(true)
+                .savePageSource(true));
     }
 
     @Test
