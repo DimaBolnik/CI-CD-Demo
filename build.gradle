@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'groovy'
     id 'io.qameta.allure' version '2.12.0'
-    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'ru.bolnik'
@@ -13,7 +12,7 @@ repositories {
 }
 
 allure {
-    // ?????? allure-commandline (??? allureReport/allureServe)
+
     version = '2.19.0'
 
     adapter {
@@ -38,7 +37,6 @@ dependencies {
 
     testImplementation "io.qameta.allure:allure-junit5:2.19.0"
     testImplementation "io.qameta.allure:allure-selenide:2.19.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 tasks.withType(JavaCompile) {
