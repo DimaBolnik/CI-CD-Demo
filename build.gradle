@@ -39,6 +39,8 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.24.2'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'io.rest-assured:rest-assured:5.5.0'
+    implementation 'org.aeonbits.owner:owner:1.0.4'
+
 
 
     // 🔑 ОБЯЗАТЕЛЬНО — адаптер для JUnit5
@@ -52,7 +54,7 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
-    systemProperty "browser", System.getProperty("browser", "chrome")
-    systemProperty "browserVersion", System.getProperty("browserVersion", "")
-    systemProperty "browserSize", System.getProperty("browserSize", "1920x1080")
+//    systemProperty "browser", System.getProperty("browser", "chrome")
+//    systemProperty "browserVersion", System.getProperty("browserVersion", "")
+//    systemProperty "browserSize", System.getProperty("browserSize", "1920x1080")
 }

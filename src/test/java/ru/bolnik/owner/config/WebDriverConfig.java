@@ -1,12 +1,14 @@
 package ru.bolnik.owner.config;
 
-public class WebDriverConfig {
+import org.aeonbits.owner.Config;
 
-    public String getBaseUrl() {
-        return "https://github.com";
-    }
+@Config.Sources({"classpath:config.properties"})
+public interface WebDriverConfig extends Config {
+    @Key("browser")
+    @DefaultValue("CHROME")
+    String browser();
 
-    public Browser getBrowser() {
-        return Browser.CHROME;
-    }
+    @Key("baseUrl")
+    @DefaultValue("https://github.com")
+    String baseUrl();
 }
