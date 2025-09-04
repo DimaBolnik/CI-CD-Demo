@@ -31,10 +31,17 @@ allure {
 }
 
 dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
     testImplementation 'com.codeborne:selenide:7.5.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
     testImplementation 'org.slf4j:slf4j-simple:2.0.13'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
 
+
+    // 🔑 ОБЯЗАТЕЛЬНО — адаптер для JUnit5
     testImplementation "io.qameta.allure:allure-junit5:2.19.0"
     testImplementation "io.qameta.allure:allure-selenide:2.19.0"
 }
