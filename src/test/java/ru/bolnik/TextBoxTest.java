@@ -28,7 +28,7 @@ public class TextBoxTest {
         // Читаем значения из Gradle
         String browser = System.getProperty("browser", "chrome");
         String browserVersion = System.getProperty("browserVersion", "");
-        String browserSize = System.getProperty("browserSize", "1920x1080");
+        String browserSize = System.getProperty("browserSize", "2560×1440");
 
         Configuration.browser = browser;
         Configuration.browserSize = browserSize;
