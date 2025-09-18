@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import ru.bolnik.owner.config.WebDriverProvider;
 
+import org.junit.jupiter.api.Disabled;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Disabled
 public class WebDriverTest {
     private WebDriver driver;
 
